@@ -34,39 +34,53 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword() {
-  alert("1st var numbers is " + numbers);
-  //initialize the password to be generated to an empty string.
-  var passwordChoices = "";
+    alert("1st var numbers is " + numbers);
+    //initialize the password to be generated to an empty string.
+    var passwordChoices = "";
 
-  //ask user for length of password.
-  //The parseInt function converts its first argument to a string, parses that string, then returns an integer or NaN.
-  passwLength = parseInt(prompt("How many characters would you like the password to have?\n It needs to be between 8 and 128 characters."));
+    //ask user for length of password.
+    //The parseInt function converts its first argument to a string, parses that string, then returns an integer or NaN.
+    passwLength = parseInt(prompt("How many characters would you like the password to have?\n It needs to be between 8 and 128 characters."));
 
-  //validate length of the password
-  if (passwLength < 8 || passwLength > 128) {
-    passwLength = parseInt(prompt("You must choose between 8 and 128 characters long."));
+    //validate length of the password
     if (passwLength < 8 || passwLength > 128) {
-      alert("You must choose between 8 and 128 characters long. \nPlease come back when you need a password!");
-      //kill execution of the program.
-      return;
-    }
-  } else if (passwLength >= 8 || passwLength <= 128) {
-    alert("I am inside the else if");
-    let numberChoice = confirm("Do you want numbers in your password?")
-    alert("var numbers is " + numberChoice);
-    if (numberChoice===true){
-      passwordChoices=passwordChoices.concat(numbers)
-      alert("passwordChoices is " + passwordChoices)
-    } 
-  } else {
-      return;
+      passwLength = parseInt(prompt("You must choose between 8 and 128 characters long."));
+      if (passwLength < 8 || passwLength > 128) {
+        alert("You must choose between 8 and 128 characters long. \nPlease come back when you need a password!");
+        //kill execution of the program.
+        return;
+      }
+    } else if (passwLength >= 8 || passwLength <= 128) {
+        alert("I am inside the else if");
+        let numberChoice = confirm("Do you want numbers in your password?")
+        alert("var numbers is " + numberChoice);
+        if (numberChoice===true){
+          passwordChoices=passwordChoices.concat(numbers)
+          alert("passwordChoices is " + passwordChoices)
+        } 
+        let specialChoice = confirm("Do you want special characters in your password?")
+        if (specialChoice===true) {
+          passwordChoices=passwordChoices.concat(specialChar)
+          alert("passwordChoices is " + passwordChoices)
+        } 
+        let lowerCaseChoice = confirm("Do you want lowercase in your password?")
+          if (lowerCaseChoice===true) {
+            passwordChoices=passwordChoices.concat(lowerCase)
+            alert("passwordChoices is " + passwordChoices)
+        }
+          let upperCaseChoice = confirm("Do you want uppercase in your password?")
+          if (upperCaseChoice===true) {
+            passwordChoices=passwordChoices.concat(upperCase)
+            alert("passwordChoices is " + passwordChoices)
+        } 
+    } else {
+        return;
   }
   
-  
-    
+
     //declare a new password variable to hold the different choices
     var userPassword = "";
-    for (let i = 0; i < passwLength; i++){
+    for (let i = 0; i < passwLength; i++) {
       let x=Math.floor(Math.random() * (passwordChoices.length));
       userPassword = userPassword.concat(passwordChoices[x])
     }
