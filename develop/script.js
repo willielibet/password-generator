@@ -42,13 +42,17 @@ function generatePassword() {
     //The parseInt function converts its first argument to a string, parses that string, then returns an integer or NaN.
     passwLength = parseInt(prompt("How many characters would you like the password to have?\n It needs to be between 8 and 128 characters."));
 
+  //   if (!numberChoice && !specialChoice && !lowerCaseChoice && !upperCaseChoice) {
+  //     alert("You must choose at least one type of character.");
+  // }
+
     //validate length of the password
     if (passwLength < 8 || passwLength > 128) {
       passwLength = parseInt(prompt("You must choose between 8 and 128 characters long."));
       if (passwLength < 8 || passwLength > 128) {
         alert("You must choose between 8 and 128 characters long. \nPlease come back when you need a password!");
         //kill execution of the program.
-        return;
+        return "You entered the wrong number of characters. \n You must choose between 8 and 128 characters long.";
       }
     } else if (passwLength >= 8 || passwLength <= 128) {
         alert("I am inside the else if");
@@ -61,28 +65,38 @@ function generatePassword() {
         let specialChoice = confirm("Do you want special characters in your password?")
         if (specialChoice===true) {
           passwordChoices=passwordChoices.concat(specialChar)
-          alert("passwordChoices is " + passwordChoices)
+          alert("passwordChoices in specialChoice is " + passwordChoices)
         } 
         let lowerCaseChoice = confirm("Do you want lowercase in your password?")
-          if (lowerCaseChoice===true) {
-            passwordChoices=passwordChoices.concat(lowerCase)
-            alert("passwordChoices is " + passwordChoices)
+        if (lowerCaseChoice===true) {
+          passwordChoices=passwordChoices.concat(lowerCase)
+          alert("passwordChoices is " + passwordChoices)
         }
-          let upperCaseChoice = confirm("Do you want uppercase in your password?")
-          if (upperCaseChoice===true) {
-            passwordChoices=passwordChoices.concat(upperCase)
-            alert("passwordChoices is " + passwordChoices)
+        let upperCaseChoice = confirm("Do you want uppercase in your password?")
+        if (upperCaseChoice===true) {
+          passwordChoices=passwordChoices.concat(upperCase)
+          alert("passwordChoices is " + passwordChoices)
         } 
+
+        alert("numberChoice is " + numberChoice);
+        alert("specialChoice is " + specialChoice);
+        alert("lowerCaseChoice is " + lowerCaseChoice);
+        alert("upperCaseChoice is " + upperCaseChoice);
+        if (!numberChoice && !specialChoice && !lowerCaseChoice && !upperCaseChoice) {
+          alert("You must choose at least one type of character.");
+          return "Choose at least one type of characters: numbers, special characters, uppercase or lowercase letters. Thanks!";
+}
     } else {
         return;
   }
   
-
     //declare a new password variable to hold the different choices
     var userPassword = "";
     for (let i = 0; i < passwLength; i++) {
       let x=Math.floor(Math.random() * (passwordChoices.length));
+      alert("value of x is " + x);
       userPassword = userPassword.concat(passwordChoices[x])
+      alert("value of passwordChoices[x] is " + x);
     }
 
   return userPassword;
