@@ -3,7 +3,7 @@
 ## Table of Contents
 
 1. Overview
-2. Table of Contents
+2. Directory Structure
 3. Mock-Up
 4. Links to deployed application
 
@@ -13,7 +13,7 @@ This is an application that generates random passwords based on criteria that is
 
 The password can include special characters. If you’re unfamiliar with these, see this [list of password special characters](https://www.owasp.org/index.php/Password_special_characters) from the OWASP Foundation.
 
-## 2. Table of Contents
+## 2. Directory Structure
 
 ![Table of Contents](./assets/table_of_contents.png)
 
